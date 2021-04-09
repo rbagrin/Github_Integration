@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 
 // Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../frontend/build')))
+app.use(express.static(path.resolve(__dirname, 'frontend/build')))
 
 // TODO: @rbagrin - make debug routes accessible without needing to login
 
@@ -24,14 +24,14 @@ app.use(express.static(path.resolve(__dirname, '../frontend/build')))
 app.use('/auth', authRoutes)
 
 // parse JWT middleware
-app.use(authUtils.getUser)
+// app.use(authUtils.getUser)
 
 // API routes
 app.use('/api', apiRoutes)
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'frontend/build', 'index.html'));
 })
 
 app.listen(PORT, () => {

@@ -4,7 +4,11 @@ const db = require('../db/models')
 const axios = require('axios')
 const authUtils = require('../utils/auth-utils')
 
-router.get('/', authUtils.authorizeRole('admin'), (req, res) => {
+// router.get('/', authUtils.authorizeRole('admin'), (req, res) => {
+//   res.send('Hello World from API!')
+// })
+
+router.get('/', (req, res) => {
   res.send('Hello World from API!')
 })
 
@@ -71,12 +75,5 @@ router.get('/github/test-request', async (req, res) => {
 
   res.send(octocat)
 })
-
-/**
- * TODO:
- *  - routes for handling authorization
- *  - save obtained credentials in db
- *  - routes to get the asked data from github api using the stored credentials
- */
 
 module.exports = router
