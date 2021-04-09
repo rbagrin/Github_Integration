@@ -18,4 +18,8 @@ router.post('/login', async (req, res) => {
   return res.json({ error: 'Wrong username or password.' })
 })
 
+router.get('/login', async (req, res) => {
+  res.send('It works')
+})
+
 module.exports = router
